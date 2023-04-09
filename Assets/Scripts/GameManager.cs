@@ -2,6 +2,7 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using Unity.VisualScripting;
@@ -29,6 +30,9 @@ public class GameManager : MonoBehaviour
 
     public GameType gameMode = GameType.Default;
 
+    private string SAVE_FOLDER;
+    private string SAVE_PATH;
+    
     public static GameManager instance;
     void Awake()
     {
@@ -41,6 +45,22 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SAVE_FOLDER = Application.dataPath + "/Save";
+        if (!Directory.Exists(SAVE_FOLDER))
+        {
+            Directory.CreateDirectory(SAVE_FOLDER);
+        }
+    }
+    
+    private void Start()
+    {
+        tileLength = tile.transform.GetComponent<Renderer>().bounds.size.x;
+        SAVE_PATH = SAVE_FOLDER + "/save"  +".txt";
+        SaveFile saveFile = new SaveFile
+        {
+            dustSolved = 0
+        };
     }
     
     void Update()
@@ -82,11 +102,6 @@ public class GameManager : MonoBehaviour
     public bool CameraMove = false;
     private Vector3 cameraMovDis;
     
-    private void Start()
-    {
-        tileLength = tile.transform.GetComponent<Renderer>().bounds.size.x;
-    }
-    
     private const string generateSceneObject = "GenerateSceneHolder";
     private const string generateTileHolder = "GenerateTileHolder";
     
@@ -113,14 +128,14 @@ public class GameManager : MonoBehaviour
     void LevelLoader()
     {
         //instantiate the tile map from file
+        dustNumSolved = LoadFunction();
         dustNumLeft = _tileGenerator.InstantiateFromFile(level, tileLength);
         
         //display the UI number for this level
-        _uiController.roomUIGenerate(level,dustNumLeft);
+        _uiController.roomUIGenerate(level, dustNumSolved,dustNumLeft);
         
         //set the initial position for camera(at player's initial position)
         Vector3 playerPos = GameObject.FindWithTag("Player").transform.position;
-        Debug.Log(playerPos.ToString());
         playerPos.z = -10;
         _cameraController.CameraLoad(playerPos);
         sceneIsEmpty = false;
@@ -146,7 +161,7 @@ public class GameManager : MonoBehaviour
                 cameraMovDis = _playerController.MoveOrTurn(tileLength);
             }
 
-            
+
             //if player has completed the level, change the level index now to get it ready for them to go to
             if (dustNumLeft == 0)
             {
@@ -165,9 +180,44 @@ public class GameManager : MonoBehaviour
         _cameraController.CameraMove(cameraMovDis);
     }
     
+    //it is called by dirt script
     public void RoomUIUpdate()
     {
-        transform.Find("UIControllerHolder").GetComponent<UIController>().roomUIUpdate(dustNumSolved, dustNumLeft);
+        _uiController.roomUIUpdate(dustNumSolved,dustNumLeft);
+    }
+    
+    private class SaveFile
+    {
+        public int dustSolved;
+    }
+
+    private void SaveFunction()
+    {
+        int dustSolved = dustNumSolved;
+
+        SaveFile saveFile = new SaveFile
+        {
+            dustSolved = dustSolved
+        };
+
+        string json = JsonUtility.ToJson(saveFile);
+        
+        File.WriteAllText(SAVE_PATH,json);
+    }
+
+    private int LoadFunction()
+    {
+        string loadText = File.ReadAllText(SAVE_PATH);
+
+        SaveFile loadFile = JsonUtility.FromJson<SaveFile>(loadText);
+
+        int dustStored = loadFile.dustSolved;
+        return dustStored;
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveFunction();
     }
 
     void UnUsed(){}

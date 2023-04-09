@@ -101,7 +101,7 @@ public class player : MonoBehaviour
         playerRb.MovePosition(moveToPos);
         GameManager.instance.transform.Find("PlayerControllerHolder").GetComponent<playerController>()
             .isExecutingMove = false;
-
+        
         GameManager.instance.CameraMove = true;
         
         return moveDis;
