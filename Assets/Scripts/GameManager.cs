@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     void Generate()
     {
         //randomly assign a room to generate
-        level = Random.Range(1, 4);
+        level = Random.Range(1, 5);
 
         if (sceneIsEmpty)
         {
@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
             //if player has completed the level, change the level index now to get it ready for them to go to
             if (dustNumLeft == 0)
             {
-                level = Random.Range(1, 4);
+                //TODO: permit nextLevel Button to generate the map
             }
 
             if (CameraMove)

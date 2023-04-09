@@ -1,20 +1,14 @@
-wwwwwwwwwwwwwwwwww
-wwwwwFFFFFFFFFwwww
-wwFFFFFFFFFFFFFFFw
-wwwFFFFFFFFFFFwwww
-wwwwwwFFFFFFFFFFww
-wFFFFFFFFFFFFFwwww
-wwFFFFFFFFFFFFFFFw
-wwFFFFFFFFFFFFFFww
-wwwwwwFFFFFFFFFFFw
-wwwwFFFFFFFFFFFFFw
-wwwFFFFFFFFFFFwwww
-wwFFFFFFFFFFFFFwww
-wwwwwwwFFFFFFFFFww
-wwwwFFFFFFFFFFFFFw
-wFFFFFFFFFFFFFwwww
-wwwwwwwwFFFFFFFFFw
-wwwwFFFFFFFFFFFFFw
-wwFFFFFFFFFFFFFFww
-wwwwwwwpFFFFFFFFFw
-wwwwwwwwwwwwwwwwww
+          wwwwwwwwwwww
+         wwFFFFFFFFwwwwwwww
+         wwwFFFFFFFFFFFFFww
+         wwwFFwwFFwwwwwFFww
+         wwFFFwwFFFFwwwFFww
+        wwFFFFwwFFFwwwwFFww
+       wwFFFFFFFFFFwwwwFFww
+         wFFFFwwwwwwwwwFFww
+       wwwwwwwFFFFFFwwwFFww
+      wwFFFFFFFFFFFFwwwFFww
+      wwFwwFFFFFFFFFwwwFFww
+      wFFFFFFFFFFwwwwwFFwww
+     wwwwwpFFFFFFFFFFFFFFFw
+        wwwwwwwwwwwwwwwwwww

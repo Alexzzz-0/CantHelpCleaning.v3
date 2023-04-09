@@ -1,8 +1,14 @@
-wwwwww
-wwFFFw
-wwFFFw
-wFFFww
-wFFFww
-wFFFww
-wwpFFw
-wwwwww
+         wwwwwwwwwwww
+         wwFFFFFFFFww
+         wwwFFFFFFFFwwwwwww
+      wwwwwwFFFFFFFFFFFFFFFwww
+      wwFFFFFFFFFFFFFwwwwwww
+       wwwwFFFFFFwwwwwwwww
+        wFFFFFFFFFFFFFFwwwww
+        wwFFFwwFFFwwwFFFwww
+       wwwwwFFFFFFwwwFFww
+        wwFFFFFFFFFFFFFwwww
+         wwFFFFFFFFFwww
+          wFFFFFFFFwww
+          wwpFFFFFFwww
+          wwwwwwwwwwww
